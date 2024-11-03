@@ -14,6 +14,7 @@ const config: Config = {
 				foreground: "hsl(var(--foreground))",
 				lightGray: "#F8F8F8",
 				hoverGray: "#F3F3F3",
+				blueButton: "#007AFF",
 				card: {
 					DEFAULT: "hsl(var(--card))",
 					foreground: "hsl(var(--card-foreground))",
@@ -57,6 +58,8 @@ const config: Config = {
 				"samsung": ["SamsungOneArabic", "Arial", "sans-serif"],
 			},
 			fontSize: {
+				"xs+": ["12px", "18px"],
+				"sm+": ["14px", "22px"],
 				"2.5xl": ["40px", "56px"],
 			},
 			boxShadow: {
