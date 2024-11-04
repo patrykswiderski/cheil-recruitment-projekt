@@ -1,6 +1,7 @@
 export interface WashingMachine {
 	id: number;
 	model: string;
+	type: string;
 	name: string;
 	capacity: string;
 	color: string;
@@ -19,7 +20,8 @@ export const washingMachines: WashingMachine[] = [
 	{
 		id: 1,
 		model: "WW90T754ABT",
-		name: "Pralka QuickDrive™",
+		type: "Pralka",
+		name: "QuickDrive™",
 		capacity: "9 kg",
 		color: "biała",
 		dimensions: "60 x 55 x 85 cm",
@@ -40,7 +42,8 @@ export const washingMachines: WashingMachine[] = [
 	{
 		id: 2,
 		model: "WW10T654DLH",
-		name: "Pralka EcoBubble™",
+		type: "Pralka",
+		name: "EcoBubble™",
 		capacity: "10.5 kg",
 		color: "biała",
 		dimensions: "60 x 55 x 85 cm",
@@ -61,7 +64,8 @@ export const washingMachines: WashingMachine[] = [
 	{
 		id: 3,
 		model: "WW90T654DLH",
-		name: "Pralka EcoBubble™",
+		type: "Pralka",
+		name: "EcoBubble™",
 		capacity: "9 kg",
 		color: "biała",
 		dimensions: "60 x 55 x 85 cm",
@@ -82,7 +86,8 @@ export const washingMachines: WashingMachine[] = [
 	{
 		id: 4,
 		model: "WW90T986ASH",
-		name: "Pralka QuickDrive™ AI",
+		type: "Pralka",
+		name: "QuickDrive™",
 		capacity: "9 kg",
 		color: "biała",
 		dimensions: "60 x 55 x 85 cm",
@@ -103,7 +108,8 @@ export const washingMachines: WashingMachine[] = [
 	{
 		id: 5,
 		model: "WW90T954ASX",
-		name: "Pralka QuickDrive™ AI",
+		type: "Pralka",
+		name: "QuickDrive™",
 		capacity: "9 kg",
 		color: "biała",
 		dimensions: "60 x 55 x 85 cm",
@@ -123,8 +129,9 @@ export const washingMachines: WashingMachine[] = [
 	},
 	{
 		id: 6,
-		model: "WW10T654DLH-8kg",
-		name: "Pralka EcoBubble™",
+		model: "WW10T654DLH",
+		type: "Pralka",
+		name: "EcoBubble™",
 		capacity: "8 kg",
 		color: "biała",
 		dimensions: "60 x 55 x 85 cm",
@@ -145,7 +152,8 @@ export const washingMachines: WashingMachine[] = [
 	{
 		id: 7,
 		model: "WW90T926ASH",
-		name: "Pralka QuickDrive™ AI",
+		type: "Pralka",
+		name: "QuickDrive™",
 		capacity: "6 kg",
 		color: "biała",
 		dimensions: "60 x 55 x 85 cm",
@@ -166,7 +174,8 @@ export const washingMachines: WashingMachine[] = [
 	{
 		id: 8,
 		model: "WW90T953ASX",
-		name: "Pralka QuickDrive™ AI",
+		type: "Pralka",
+		name: "QuickDrive™",
 		capacity: "11 kg",
 		color: "biała",
 		dimensions: "60 x 55 x 85 cm",
@@ -186,8 +195,9 @@ export const washingMachines: WashingMachine[] = [
 	},
 	{
 		id: 9,
-		model: "WW10T754DLH-7kg",
-		name: "Pralka EcoBubble™",
+		model: "WW10T754DLH",
+		type: "Pralka",
+		name: "EcoBubble™",
 		capacity: "7 kg",
 		color: "biała",
 		dimensions: "60 x 55 x 85 cm",

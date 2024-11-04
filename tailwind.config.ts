@@ -15,6 +15,11 @@ const config: Config = {
 				lightGray: "#F8F8F8",
 				hoverGray: "#F3F3F3",
 				blueButton: "#007AFF",
+				descriptionDeviceGray: "#767676",
+				ecoGreen: "#009949",
+				financingGrey: "#555555",
+				chooseButtonBlue: "#1428A0",
+				chooseButtonHover: "#1C1C1C",
 				card: {
 					DEFAULT: "hsl(var(--card))",
 					foreground: "hsl(var(--card-foreground))",
@@ -60,6 +65,7 @@ const config: Config = {
 			fontSize: {
 				"xs+": ["12px", "18px"],
 				"sm+": ["14px", "22px"],
+				"lg-": ["18px", "22px"],
 				"2.5xl": ["40px", "56px"],
 			},
 			boxShadow: {
@@ -69,6 +75,13 @@ const config: Config = {
 				lg: "var(--radius)",
 				md: "calc(var(--radius) - 2px)",
 				sm: "calc(var(--radius) - 4px)",
+				itemCard: "20px",
+			},
+			leadingHeight: {
+				"4+": "18px",
+			},
+			letterSpacing: {
+				"widest+": "0.13em",
 			},
 		},
 	},
