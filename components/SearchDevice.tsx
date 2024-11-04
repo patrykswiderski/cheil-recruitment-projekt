@@ -12,12 +12,15 @@ const SearchDevice: React.FC = () => {
   const [selectedEnergyClass, setSelectedEnergyClass] = useState<string[]>([]);
   const [selectedCapacity, setSelectedCapacity] = useState<string[]>([]);
 
-  const sortOptions: Option[] = [
-    { value: "all", label: "Wszystkie" },
-    { value: "price", label: "Cena" },
-    { value: "popularity", label: "Popularność" },
-    { value: "capacity", label: "Pojemność" },
-  ];
+  const sortOptions: Option[] = useMemo(
+    () => [
+      { value: "all", label: "Wszystkie" },
+      { value: "price", label: "Cena" },
+      { value: "popularity", label: "Popularność" },
+      { value: "capacity", label: "Pojemność" },
+    ],
+    []
+  );
 
   const handleInputChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     setSearchInput(e.target.value);

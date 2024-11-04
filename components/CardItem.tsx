@@ -18,7 +18,6 @@ interface CardItemProps {
 }
 
 const CardItem: React.FC<CardItemProps> = ({
-  id,
   model = "Brak modelu",
   name = "Brak nazwy",
   type = "Brak typu",
