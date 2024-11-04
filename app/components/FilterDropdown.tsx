@@ -60,7 +60,7 @@ const FilterDropdown: React.FC<FilterDropdownProps> = ({
 	};
 
 	return (
-		<div className="flex flex-col w-full max-w-[249px] py-[2px]">
+		<div className="flex flex-col justify-start w-full max-w-[249px] mx-8 sm:mx-auto md:mx-0">
 			<h3 className="font-bold text-lg leading-[22px] h-full max-h-[20px] mb-[7px]">
 				{title}
 			</h3>
@@ -70,7 +70,7 @@ const FilterDropdown: React.FC<FilterDropdownProps> = ({
 						variant="outline"
 						role="combobox"
 						aria-expanded={open}
-						className="flex justify-between items-bottom border-none h-full max-h-[36px] pl-3 text-sm+"
+						className="flex justify-between items-bottom border-none rounded-none h-full max-h-[36px] pl-3 text-sm+ "
 					>
 						{displayText()}
 						<Image
@@ -81,9 +81,9 @@ const FilterDropdown: React.FC<FilterDropdownProps> = ({
 						/>
 					</Button>
 				</PopoverTrigger>
-				<PopoverContent className="max-w-[249px] border-none rounded-none p-0 shadow-xs mt-1">
-					<Command>
-						<CommandList>
+				<PopoverContent className="max-w-48 xs:max-w-[249px] md:max-w-52 lg:max-w-[249px] border-none rounded-none p-0 shadow-xs mt-1">
+					<Command className="rounded-none">
+						<CommandList className="rounded-none">
 							<CommandEmpty>Brak danych</CommandEmpty>
 							<CommandGroup className="p-0">
 								{options.map((option) => (

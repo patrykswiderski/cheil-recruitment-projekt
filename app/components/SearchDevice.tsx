@@ -172,8 +172,8 @@ const SearchDevice: React.FC = () => {
 
 	return (
 		<div className="w-full bg-lightGray">
-			<div className="flex flex-col justify-center items-center w-full max-w-[1046px] mx-auto">
-				<div className="-ml-12 my-[23px] pb-[9px]">
+			<div className="flex flex-col justify-start sm:justify-center items-center w-full max-w-[1046px] mx-auto">
+				<div className="self-start sm:self-center mx-8 sm:mx-0 lg:-ml-12 my-[23px] pb-[9px]">
 					<input
 						type="text"
 						placeholder="Search..."
@@ -184,7 +184,7 @@ const SearchDevice: React.FC = () => {
 					/>
 				</div>
 
-				<div className="flex justify-end gap-3 w-full">
+				<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 md:justify-end gap-y-3 md:gap-x-3 md:pl-[14px] py-[2px] w-full md:max-w-[1046px]">
 					<FilterDropdown
 						title="Sortuj po:"
 						options={sortOptions}
@@ -215,7 +215,7 @@ const SearchDevice: React.FC = () => {
 					/>
 				</div>
 
-				<div className="flex justify-start w-full max-w-[1032px] pl-3 py-2 mb-1">
+				<div className="flex mx-8 sm:mx-0 self-start sm:self-center sm:justify-center md:justify-start md:w-full md:max-w-[1046px] md:pl-[18px] py-2 mb-1">
 					<h4 className="text-sm+">
 						Liczba wyników:{" "}
 						<span className="font-semibold">

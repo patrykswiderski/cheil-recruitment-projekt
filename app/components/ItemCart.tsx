@@ -18,10 +18,6 @@ interface CardItemProps {
 	imageSrc: string;
 }
 
-const convertPrice = (grosze: number): string => {
-	return (grosze / 100).toFixed(2);
-};
-
 const CardItem: React.FC<CardItemProps> = ({
 	id,
 	model,
@@ -39,8 +35,8 @@ const CardItem: React.FC<CardItemProps> = ({
 	imageSrc,
 }) => {
 	return (
-		<div className="flex flex-col p-4 rounded-itemCard w-full max-w-[338px] bg-background px-6 py-[25px] gap-[10px]">
-			<div className="flex flex-col gap-4 w-full max-w-[290px]">
+		<div className="flex flex-col p-4 rounded-itemCard w-full sm:max-w-[338px] bg-background px-6 py-[25px] gap-[10px] max-h-[603px]">
+			<div className="flex flex-col gap-4 w-full sm-max-w-[290px]">
 				<div className="flex justify-center w-full h-full max-h-[200px]">
 					<Image
 						src={imageSrc}
@@ -53,7 +49,7 @@ const CardItem: React.FC<CardItemProps> = ({
 				<div className="flex flex-col gap-[14px]">
 					<div className="flex flex-col gap-2">
 						<div className="mb-7">
-							<h3 className="text-lg- font-bold">
+							<h3 className="text-lg- font-bold line-clamp-2">
 								{model}, {type}
 							</h3>
 							<h3 className="text-lg- font-bold">
@@ -63,13 +59,15 @@ const CardItem: React.FC<CardItemProps> = ({
 						<div>
 							<div className="text-xs+ text-descriptionDeviceGray">
 								Pojemność (kg):{" "}
-								<span className=" font-bold text-foreground">{capacity}</span>
+								<span className=" font-bold text-foreground">
+									{capacity.slice(0, -3)}
+								</span>
 							</div>
 							<div className="text-xs+ text-descriptionDeviceGray">
 								Wymiary (G×S×W):{" "}
 								<span className=" font-bold text-foreground">{dimensions}</span>
 							</div>
-							<div className="text-xs+ text-descriptionDeviceGray ">
+							<div className="text-xs+ text-descriptionDeviceGray line-clamp-2">
 								Funkcje:{" "}
 								<span className=" font-bold text-foreground">
 									{functions.join(", ")}
@@ -97,9 +95,9 @@ const CardItem: React.FC<CardItemProps> = ({
 									.slice(0, -2)
 									.replace(/\B(?=(\d{3})+(?!\d))/g, " ")}
 							</div>
-							<div className="flex flex-col max-h-[31px] text-sm leading-4 font-bold">
+							<div className="flex flex-col justify-center items-center self-end h-full text-sm leading-4 font-bold">
 								<div>{String(price).slice(-2)}</div>
-								<div className="text-right">{currency}</div>
+								<div className="self-end">{currency}</div>
 							</div>
 						</div>
 					</div>

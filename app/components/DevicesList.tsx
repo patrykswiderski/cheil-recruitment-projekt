@@ -15,10 +15,10 @@ const DevicesList: React.FC<DevicesListProps> = ({
 }) => {
 	return (
 		<>
-			<div className="w-full max-w-[1046px]">
-				<ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-4">
+			<div className=" max-w-[692px] md:max-w-full">
+				<ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
 					{devices.slice(0, itemsToShow).map((device) => (
-						<li key={device.id}>
+						<li className="flex justify-center" key={device.id}>
 							<CardItem
 								id={device.id}
 								name={device.name}
