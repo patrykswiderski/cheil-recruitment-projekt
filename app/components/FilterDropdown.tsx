@@ -67,22 +67,32 @@ const FilterDropdown: React.FC<FilterDropdownProps> = ({
 			<Popover open={open} onOpenChange={setOpen}>
 				<PopoverTrigger asChild>
 					<Button
+						id="filter-dropdown-button"
 						variant="outline"
 						role="combobox"
 						aria-expanded={open}
-						className="flex justify-between items-bottom border-none rounded-none h-full max-h-[36px] pl-3 text-sm+ "
+						aria-controls="filter-dropdown-list"
+						aria-haspopup="listbox"
+						className="flex justify-between items-bottom border-none rounded-none h-full max-h-[36px] pl-3 text-sm+"
+						type="button"
 					>
 						{displayText()}
 						<Image
 							src="/assets/icons/chevronDown.svg"
 							width={13}
 							height={13}
-							alt="arrow down icon"
+							alt=""
+							aria-hidden="true"
 						/>
 					</Button>
 				</PopoverTrigger>
-				<PopoverContent className="max-w-48 xs:max-w-[249px] md:max-w-52 lg:max-w-[249px] border-none rounded-none p-0 shadow-xs mt-1">
-					<Command className="rounded-none">
+				<PopoverContent
+					id="filter-dropdown-list"
+					aria-labelledby="filter-dropdown-button"
+					role="listbox"
+					className="max-w-48 xs:max-w-[249px] md:max-w-52 lg:max-w-[249px] border-none rounded-none p-0 shadow-xs mt-1"
+				>
+					<Command className="rounded-none" role="listbox">
 						<CommandList className="rounded-none">
 							<CommandEmpty>Brak danych</CommandEmpty>
 							<CommandGroup className="p-0">
@@ -98,6 +108,13 @@ const FilterDropdown: React.FC<FilterDropdownProps> = ({
 												? "bg-hoverGray"
 												: ""
 										}`}
+										role="option"
+										aria-selected={
+											isMulti
+												? Array.isArray(selectedValues) &&
+												  selectedValues.includes(option.value)
+												: selectedValues === option.value
+										}
 									>
 										{option.label}
 									</CommandItem>

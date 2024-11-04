@@ -15,7 +15,7 @@ const DevicesList: React.FC<DevicesListProps> = ({
 }) => {
 	return (
 		<>
-			<div className=" max-w-[692px] md:max-w-full">
+			<div className="max-w-[692px] md:max-w-full">
 				<ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
 					{devices.slice(0, itemsToShow).map((device) => (
 						<li className="flex justify-center" key={device.id}>
@@ -44,13 +44,15 @@ const DevicesList: React.FC<DevicesListProps> = ({
 					<button
 						onClick={handleShowMore}
 						className="flex justify-between items-center border-none bg-transparent text-blueButton text-lg font-bold leading-[28px] w-[118px] h-[20px]"
+						aria-label="Show more devices"
 					>
 						Pokaż więcej
 						<Image
 							src="/assets/icons/chevronDownBlue.svg"
 							width={7}
 							height={7}
-							alt="arrow down icon"
+							alt=""
+							aria-hidden="true"
 						/>
 					</button>
 				</div>

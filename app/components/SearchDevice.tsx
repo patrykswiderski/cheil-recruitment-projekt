@@ -1,9 +1,9 @@
 "use client";
 import { useState, ChangeEvent, useMemo, useEffect } from "react";
 import { washingMachines } from "../data/devices";
+import { Option } from "./FilterDropdown";
 import DevicesList from "./DevicesList";
 import FilterDropdown from "./FilterDropdown";
-import { Option } from "./FilterDropdown";
 
 const SearchDevice: React.FC = () => {
 	const [searchInput, setSearchInput] = useState<string>("");
@@ -174,7 +174,11 @@ const SearchDevice: React.FC = () => {
 		<div className="w-full bg-lightGray">
 			<div className="flex flex-col justify-start sm:justify-center items-center w-full max-w-[1046px] mx-auto">
 				<div className="self-start sm:self-center mx-8 sm:mx-0 lg:-ml-12 my-[23px] pb-[9px]">
+					<label htmlFor="search-input" className="sr-only">
+						Wyszukaj urządzenie
+					</label>
 					<input
+						id="search-input"
 						type="text"
 						placeholder="Search..."
 						className="text-black bg-white outline-none px-3 py-2 placeholder:text-black h-[36px]"

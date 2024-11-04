@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { Button } from "@/components/ui/button";
 
 interface CardItemProps {
 	id: number;
@@ -35,15 +34,16 @@ const CardItem: React.FC<CardItemProps> = ({
 	imageSrc,
 }) => {
 	return (
-		<div className="flex flex-col p-4 rounded-itemCard w-full sm:max-w-[338px] bg-background px-6 py-[25px] gap-[10px] max-h-[603px]">
-			<div className="flex flex-col gap-4 w-full sm-max-w-[290px]">
+		<div className="flex flex-col p-4 rounded-itemCard w-full sm:max-w-[338px] bg-background px-6 py-[25px] gap-3 max-h-[603px]">
+			<div className="flex flex-col gap-4 w-full sm:max-w-[290px]">
 				<div className="flex justify-center w-full h-full max-h-[200px]">
 					<Image
 						src={imageSrc}
-						alt={name}
+						alt={`${type} - ${model}`}
 						width={290}
 						height={200}
 						className="object-contain"
+						loading="lazy"
 					/>
 				</div>
 				<div className="flex flex-col gap-[14px]">
@@ -82,7 +82,10 @@ const CardItem: React.FC<CardItemProps> = ({
 							<div className="flex items-center text-white text-xs leading-[14px] pl-[6px] font-bold bg-ecoGreen w-[42.6px] h-[18px]">
 								{energyClass}
 							</div>
-							<div className="inset-y-0 right-0 w-0 h-0 border-y-[9px] border-y-transparent border-l-[7px] border-l-ecoGreen"></div>
+							<div
+								className="inset-y-0 right-0 w-0 h-0 border-y-[9px] border-y-transparent border-l-[7px] border-l-ecoGreen"
+								aria-hidden="true"
+							></div>
 						</div>
 					</div>
 					<div className="flex flex-col gap-[1px]">
@@ -107,7 +110,11 @@ const CardItem: React.FC<CardItemProps> = ({
 				</div>
 			</div>
 
-			<button className="flex items-center self-center w-fit max-h-9 px-10 py-[14px] rounded-full text-sm leading-4 font-bold tracking-widest+ bg-chooseButtonBlue text-white hover:bg-chooseButtonHover">
+			<button
+				type="button"
+				className="flex items-center self-center w-fit max-h-9 px-10 py-[14px] rounded-full text-sm leading-4 font-bold tracking-widest+ bg-chooseButtonBlue text-white hover:bg-chooseButtonHover"
+				aria-label={`Choose ${type} ${model}`}
+			>
 				WYBIERZ
 			</button>
 		</div>

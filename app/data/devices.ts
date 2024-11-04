@@ -44,7 +44,7 @@ export const washingMachines: WashingMachine[] = [
 		model: "WW10T654DLH",
 		type: "Pralka",
 		name: "EcoBubble™",
-		capacity: "10.5 kg",
+		capacity: "10,5 kg",
 		color: "biała",
 		dimensions: "60 x 55 x 85 cm",
 		functions: [
@@ -110,7 +110,7 @@ export const washingMachines: WashingMachine[] = [
 		model: "WW90T954ASX",
 		type: "Pralka",
 		name: "QuickDrive™",
-		capacity: "9 kg",
+		capacity: "9,5 kg",
 		color: "biała",
 		dimensions: "60 x 55 x 85 cm",
 		functions: [

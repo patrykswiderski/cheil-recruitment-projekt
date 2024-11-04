@@ -5,23 +5,23 @@ import "./globals.css";
 const samsungOneArabic = localFont({
 	src: [
 		{
-			path: "./fonts/SamsungOneArabic-300.ttf",
+			path: "../public/fonts/SamsungOneArabic-300.ttf",
 			weight: "300",
 		},
 		{
-			path: "./fonts/SamsungOneArabic-400.ttf",
+			path: "../public/fonts/SamsungOneArabic-400.ttf",
 			weight: "400",
 		},
 		{
-			path: "./fonts/SamsungOneArabic-450.ttf",
+			path: "../public/fonts/SamsungOneArabic-450.ttf",
 			weight: "450",
 		},
 		{
-			path: "./fonts/SamsungOneArabic-600.ttf",
+			path: "../public/fonts/SamsungOneArabic-600.ttf",
 			weight: "600",
 		},
 		{
-			path: "./fonts/SamsungOneArabic-700.ttf",
+			path: "../public/fonts/SamsungOneArabic-700.ttf",
 			weight: "700",
 		},
 	],
