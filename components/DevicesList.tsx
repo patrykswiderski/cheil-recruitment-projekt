@@ -1,6 +1,6 @@
 import Image from "next/image";
-import CardItem from "./ItemCart";
-import { WashingMachine } from "../data/devices";
+import CardItem from "@/components/CardItem";
+import { WashingMachine } from "@/app/data/devices";
 
 interface DevicesListProps {
   devices: WashingMachine[];
@@ -39,7 +39,7 @@ const DevicesList: React.FC<DevicesListProps> = ({
           ))}
         </ul>
       </div>
-      {itemsToShow < devices.length && (
+      {itemsToShow < devices.length ? (
         <div className="flex justify-center mt-4 mb-[38px]">
           <button
             onClick={handleShowMore}
@@ -56,6 +56,8 @@ const DevicesList: React.FC<DevicesListProps> = ({
             />
           </button>
         </div>
+      ) : (
+        <div className="mb-[38px]" aria-hidden="true"></div>
       )}
     </>
   );

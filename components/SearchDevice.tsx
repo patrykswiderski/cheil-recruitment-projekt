@@ -1,9 +1,8 @@
 "use client";
-import { useState, ChangeEvent, useMemo, useEffect } from "react";
-import { washingMachines } from "../data/devices";
-import { Option } from "./FilterDropdown";
-import DevicesList from "./DevicesList";
-import FilterDropdown from "./FilterDropdown";
+import { useState, ChangeEvent, useMemo, useEffect, useCallback } from "react";
+import { washingMachines } from "@/app/data/devices";
+import DevicesList from "@/components/DevicesList";
+import FilterDropdown, { Option } from "@/components/FilterDropdown";
 
 const SearchDevice: React.FC = () => {
   const [searchInput, setSearchInput] = useState<string>("");
@@ -13,16 +12,6 @@ const SearchDevice: React.FC = () => {
   const [selectedEnergyClass, setSelectedEnergyClass] = useState<string[]>([]);
   const [selectedCapacity, setSelectedCapacity] = useState<string[]>([]);
 
-  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setSearchInput(e.target.value);
-  };
-
-  const handleSortSelect = (value: string) => {
-    const sortOption =
-      sortOptions.find((option) => option.value === value) || null;
-    setSelectedSort(sortOption);
-  };
-
   const sortOptions: Option[] = [
     { value: "all", label: "Wszystkie" },
     { value: "price", label: "Cena" },
@@ -30,20 +19,36 @@ const SearchDevice: React.FC = () => {
     { value: "capacity", label: "Pojemność" },
   ];
 
+  const handleInputChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
+    setSearchInput(e.target.value);
+  }, []);
+
+  const handleSortSelect = useCallback(
+    (value: string) => {
+      const sortOption =
+        sortOptions.find((option) => option.value === value) || null;
+      setSelectedSort(sortOption);
+    },
+    [sortOptions]
+  );
+
   const uniqueFunctions = useMemo(() => {
     const functionsSet = new Set<string>();
     washingMachines.forEach((machine) => {
-      machine.functions.forEach((func) => functionsSet.add(func));
+      machine.functions?.forEach((func) => functionsSet.add(func));
     });
     return Array.from(functionsSet);
   }, []);
 
-  const functionOptions: Option[] = [
-    { value: "all", label: "Wszystkie" },
-    ...uniqueFunctions.map((func) => ({ value: func, label: func })),
-  ];
+  const functionOptions: Option[] = useMemo(
+    () => [
+      { value: "all", label: "Wszystkie" },
+      ...uniqueFunctions.map((func) => ({ value: func, label: func })),
+    ],
+    [uniqueFunctions]
+  );
 
-  const handleFunctionSelect = (value: string) => {
+  const handleFunctionSelect = useCallback((value: string) => {
     if (value === "all") {
       setSelectedFunctions([]);
     } else {
@@ -53,7 +58,7 @@ const SearchDevice: React.FC = () => {
           : [...prev, value]
       );
     }
-  };
+  }, []);
 
   const uniqueEnergyClasses = useMemo(() => {
     const energySet = new Set<string>();
@@ -63,12 +68,15 @@ const SearchDevice: React.FC = () => {
     return Array.from(energySet);
   }, []);
 
-  const energyClassOptions: Option[] = [
-    { value: "all", label: "Wszystkie" },
-    ...uniqueEnergyClasses.map((eco) => ({ value: eco, label: eco })),
-  ];
+  const energyClassOptions: Option[] = useMemo(
+    () => [
+      { value: "all", label: "Wszystkie" },
+      ...uniqueEnergyClasses.map((eco) => ({ value: eco, label: eco })),
+    ],
+    [uniqueEnergyClasses]
+  );
 
-  const handleEnergyClassSelect = (value: string) => {
+  const handleEnergyClassSelect = useCallback((value: string) => {
     if (value === "all") {
       setSelectedEnergyClass([]);
     } else {
@@ -78,27 +86,32 @@ const SearchDevice: React.FC = () => {
           : [...prev, value]
       );
     }
-  };
+  }, []);
 
   const uniqueCapacities = useMemo(() => {
     const capacitySet = new Set<string>();
     washingMachines.forEach((device) => {
-      capacitySet.add(device.capacity);
+      if (device.capacity) {
+        capacitySet.add(device.capacity);
+      }
     });
     return Array.from(capacitySet).sort(
       (a, b) => parseFloat(b) - parseFloat(a)
     );
   }, []);
 
-  const capacityOptions: Option[] = [
-    { value: "all", label: "Wszystkie" },
-    ...uniqueCapacities.map((capacity) => ({
-      value: capacity,
-      label: capacity,
-    })),
-  ];
+  const capacityOptions: Option[] = useMemo(
+    () => [
+      { value: "all", label: "Wszystkie" },
+      ...uniqueCapacities.map((capacity) => ({
+        value: capacity,
+        label: capacity,
+      })),
+    ],
+    [uniqueCapacities]
+  );
 
-  const handleCapacitySelect = (value: string) => {
+  const handleCapacitySelect = useCallback((value: string) => {
     if (value === "all") {
       setSelectedCapacity([]);
     } else {
@@ -108,32 +121,35 @@ const SearchDevice: React.FC = () => {
           : [...prev, value]
       );
     }
-  };
+  }, []);
 
   const sortedAndFilteredWashingMachines = useMemo(() => {
     let filtered = washingMachines;
 
     if (searchInput.trim() !== "") {
-      filtered = filtered.filter((machine) =>
-        machine.name.toLowerCase().includes(searchInput.toLowerCase())
+      const searchLower = searchInput.toLowerCase();
+      filtered = filtered.filter(
+        (machine) =>
+          machine.name?.toLowerCase().includes(searchLower) ||
+          machine.model?.toLowerCase().includes(searchLower)
       );
     }
 
     if (selectedFunctions.length > 0) {
       filtered = filtered.filter((machine) =>
-        selectedFunctions.every((func) => machine.functions.includes(func))
+        selectedFunctions.every((func) => machine.functions?.includes(func))
       );
     }
 
     if (selectedEnergyClass.length > 0) {
       filtered = filtered.filter((machine) =>
-        selectedEnergyClass.includes(machine.energyClass)
+        selectedEnergyClass.includes(machine.energyClass ?? "")
       );
     }
 
     if (selectedCapacity.length > 0) {
       filtered = filtered.filter((machine) =>
-        selectedCapacity.includes(machine.capacity)
+        selectedCapacity.includes(machine.capacity ?? "")
       );
     }
 
@@ -142,13 +158,13 @@ const SearchDevice: React.FC = () => {
     const sorted = [...filtered];
     switch (selectedSort.value) {
       case "price":
-        return sorted.sort((a, b) => a.price - b.price);
+        return sorted.sort((a, b) => (a.price ?? 0) - (b.price ?? 0));
       case "popularity":
-        return sorted.sort((a, b) => b.popularity - a.popularity);
+        return sorted.sort((a, b) => (b.popularity ?? 0) - (a.popularity ?? 0));
       case "capacity":
         return sorted.sort((a, b) => {
-          const capacityA = parseFloat(a.capacity);
-          const capacityB = parseFloat(b.capacity);
+          const capacityA = parseFloat(a.capacity ?? "0");
+          const capacityB = parseFloat(b.capacity ?? "0");
           return capacityB - capacityA;
         });
       default:
@@ -166,9 +182,9 @@ const SearchDevice: React.FC = () => {
     setItemsToShow(6);
   }, [sortedAndFilteredWashingMachines]);
 
-  const handleShowMore = () => {
+  const handleShowMore = useCallback(() => {
     setItemsToShow((prev) => prev + 6);
-  };
+  }, []);
 
   return (
     <div className="w-full bg-lightGray">

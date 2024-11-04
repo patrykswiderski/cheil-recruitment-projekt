@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import {
@@ -52,12 +52,15 @@ const FilterDropdown: React.FC<FilterDropdownProps> = ({
     }
   };
 
-  const handleSelect = (value: string) => {
-    onSelect(value);
-    if (!isMulti) {
-      setOpen(false);
-    }
-  };
+  const handleSelect = useCallback(
+    (value: string) => {
+      onSelect(value);
+      if (!isMulti) {
+        setOpen(false);
+      }
+    },
+    [onSelect, isMulti]
+  );
 
   return (
     <div className="flex flex-col justify-start w-full max-w-[249px] ml-8 sm:mx-auto md:ml-0">
@@ -92,8 +95,8 @@ const FilterDropdown: React.FC<FilterDropdownProps> = ({
           role="listbox"
           className="max-w-48 xs:max-w-[249px] md:max-w-52 lg:max-w-[249px] border-none rounded-none p-0 shadow-xs mt-1"
         >
-          <Command className="rounded-none" role="listbox">
-            <CommandList className="rounded-none">
+          <Command className="rounded-none border-none" role="listbox">
+            <CommandList>
               <CommandEmpty>Brak danych</CommandEmpty>
               <CommandGroup className="p-0">
                 {options.map((option) => (
@@ -101,7 +104,7 @@ const FilterDropdown: React.FC<FilterDropdownProps> = ({
                     key={option.value}
                     value={option.value}
                     onSelect={() => handleSelect(option.value)}
-                    className={`text-xs leading-[18px] hover:bg-hoverGray w-full h-full max-h-[40px] border-none pl-4 ${
+                    className={`text-xs leading-[18px] hover:bg-hoverGray rounded-none w-full h-full max-h-[40px]  pl-4 ${
                       isMulti &&
                       Array.isArray(selectedValues) &&
                       selectedValues.includes(option.value)

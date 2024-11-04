@@ -19,19 +19,19 @@ interface CardItemProps {
 
 const CardItem: React.FC<CardItemProps> = ({
   id,
-  model,
-  name,
-  type,
-  capacity,
-  color,
-  dimensions,
-  functions,
-  energyClass,
-  price,
-  currency,
-  financing,
-  priceAvailability,
-  imageSrc,
+  model = "Brak modelu",
+  name = "Brak nazwy",
+  type = "Brak typu",
+  capacity = "Brak danych",
+  color = "Brak danych",
+  dimensions = "Brak danych",
+  functions = [],
+  energyClass = "Brak danych",
+  price = 0,
+  currency = "zł",
+  financing = "",
+  priceAvailability = "",
+  imageSrc = "/assets/image/default.png",
 }) => {
   return (
     <div className="flex flex-col p-4 rounded-itemCard w-full sm:max-w-[338px] bg-background px-6 py-[25px] gap-3 sm:max-h-[603px]">
@@ -43,6 +43,10 @@ const CardItem: React.FC<CardItemProps> = ({
             fill
             className="object-contain"
             loading="lazy"
+            onError={(e) => {
+              (e.currentTarget as HTMLImageElement).src =
+                "/assets/image/default.png";
+            }}
           />
         </div>
         <div className="flex flex-col gap-[14px]">
@@ -55,7 +59,7 @@ const CardItem: React.FC<CardItemProps> = ({
                 {name}, {capacity}, {color}
               </h3>
             </div>
-            <div>
+            <div className="h-[72px]">
               <div className="text-xs+ text-descriptionDeviceGray">
                 Pojemność (kg):{" "}
                 <span className=" font-bold text-foreground">
@@ -69,12 +73,11 @@ const CardItem: React.FC<CardItemProps> = ({
               <div className="text-xs+ text-descriptionDeviceGray line-clamp-2">
                 Funkcje:{" "}
                 <span className=" font-bold text-foreground">
-                  {functions.join(", ")}
+                  {functions.length > 0 ? functions.join(", ") : "Brak funkcji"}
                 </span>
               </div>
             </div>
           </div>
-
           <div className="flex items-center gap-[9px] text-xs+ text-descriptionDeviceGray w-[290px]">
             <div>Klasa energetyczna</div>
             <div className="flex">
@@ -98,7 +101,7 @@ const CardItem: React.FC<CardItemProps> = ({
                   .replace(/\B(?=(\d{3})+(?!\d))/g, " ")}
               </div>
               <div className="flex flex-col justify-center self-end h-full text-sm leading-4 font-bold -mb-[3px]">
-                <div>{String(price).slice(-2)}</div>
+                <div>{price ? String(price).slice(-2) : "00"}</div>
                 <div className="self-end">{currency}</div>
               </div>
             </div>
@@ -108,7 +111,6 @@ const CardItem: React.FC<CardItemProps> = ({
           </div>
         </div>
       </div>
-
       <button
         type="button"
         className="flex items-center self-center w-fit max-h-9 px-10 py-[14px] rounded-full text-sm leading-4 font-bold tracking-widest+ bg-chooseButtonBlue text-white hover:bg-chooseButtonHover"

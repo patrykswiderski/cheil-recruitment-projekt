@@ -1,4 +1,15 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Washing Machines Catalog
+
+A responsive and accessible Next.js application for browsing and filtering washing machines. Built with TypeScript and Tailwind CSS, this project offers a seamless user experience with dynamic search and filter functionalities.
+
+## Features
+
+- **Search Functionality**: Search washing machines by name and model.
+- **Filter Options**: Filter devices based on functions, energy class, and capacity.
+- **Dynamic Display**: Conditionally display the "Show More" button when there are more than six results.
+- **Responsive Design**: Fully responsive layout using Tailwind CSS.
+- **Accessibility**: Improved accessibility with proper ARIA attributes and keyboard navigation support.
+- **Optimized Images**: Lazy loading and error handling for images using `next/image`.
 
 ## Getting Started
 
@@ -34,3 +45,11 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## TODO
+
+- **Extract Strings to Dictionaries**: Refactor string literals into separate dictionary files to support localization and easier management.
+- **Implement React Context**: Utilize React Context API for managing global state, such as user preferences and filter selections.
+- **Add Unit Tests**: Write unit tests for components using testing libraries like Jest and React Testing Library.
+- **Enhance Documentation**: Expand the README.md with more detailed instructions, contributing guidelines, and project structure overview.
+- **Add Dark Mode**: Implement a dark mode theme to enhance user experience
