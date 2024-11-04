@@ -20,7 +20,6 @@ const DevicesList: React.FC<DevicesListProps> = ({
           {devices.slice(0, itemsToShow).map((device) => (
             <li className="flex justify-center" key={device.id}>
               <CardItem
-                id={device.id}
                 name={device.name}
                 model={device.model}
                 type={device.type}

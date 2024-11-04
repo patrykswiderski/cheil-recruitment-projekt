@@ -1,7 +1,6 @@
 import Image from "next/image";
 
 interface CardItemProps {
-  id: number;
   model: string;
   name: string;
   type: string;

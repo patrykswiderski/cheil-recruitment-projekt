@@ -4,6 +4,13 @@ import { washingMachines } from "@/app/data/devices";
 import DevicesList from "@/components/DevicesList";
 import FilterDropdown, { Option } from "@/components/FilterDropdown";
 
+const sortOptions: Option[] = [
+  { value: "all", label: "Wszystkie" },
+  { value: "price", label: "Cena" },
+  { value: "popularity", label: "Popularność" },
+  { value: "capacity", label: "Pojemność" },
+];
+
 const SearchDevice: React.FC = () => {
   const [searchInput, setSearchInput] = useState<string>("");
   const [itemsToShow, setItemsToShow] = useState<number>(6);
@@ -11,16 +18,6 @@ const SearchDevice: React.FC = () => {
   const [selectedFunctions, setSelectedFunctions] = useState<string[]>([]);
   const [selectedEnergyClass, setSelectedEnergyClass] = useState<string[]>([]);
   const [selectedCapacity, setSelectedCapacity] = useState<string[]>([]);
-
-  const sortOptions: Option[] = useMemo(
-    () => [
-      { value: "all", label: "Wszystkie" },
-      { value: "price", label: "Cena" },
-      { value: "popularity", label: "Popularność" },
-      { value: "capacity", label: "Pojemność" },
-    ],
-    []
-  );
 
   const handleInputChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
     setSearchInput(e.target.value);
