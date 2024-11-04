@@ -10,6 +10,7 @@ const config: Config = {
 	theme: {
 		extend: {
 			screens: {
+				"xxs": "320px",
 				"xs": "420px",
 			},
 			colors: {
@@ -69,7 +70,8 @@ const config: Config = {
 				"xs+": ["12px", "18px"],
 				"sm+": ["14px", "22px"],
 				"lg-": ["18px", "22px"],
-				"2.5xl": ["40px", "56px"],
+				"4.5xl": ["40px", "56px"],
+				"5xl-": ["40px", "40px"],
 			},
 			boxShadow: {
 				"xs": "4px 4px 4px rgba(0, 0, 0, 0.02)",

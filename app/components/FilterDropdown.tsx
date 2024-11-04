@@ -60,7 +60,7 @@ const FilterDropdown: React.FC<FilterDropdownProps> = ({
 	};
 
 	return (
-		<div className="flex flex-col justify-start w-full max-w-[249px] mx-8 sm:mx-auto md:mx-0">
+		<div className="flex flex-col justify-start w-full max-w-[249px] ml-8 sm:mx-auto md:ml-0">
 			<h3 className="font-bold text-lg leading-[22px] h-full max-h-[20px] mb-[7px]">
 				{title}
 			</h3>

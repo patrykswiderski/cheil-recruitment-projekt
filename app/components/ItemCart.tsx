@@ -34,22 +34,21 @@ const CardItem: React.FC<CardItemProps> = ({
 	imageSrc,
 }) => {
 	return (
-		<div className="flex flex-col p-4 rounded-itemCard w-full sm:max-w-[338px] bg-background px-6 py-[25px] gap-3 max-h-[603px]">
+		<div className="flex flex-col p-4 rounded-itemCard w-full sm:max-w-[338px] bg-background px-6 py-[25px] gap-3 sm:max-h-[603px]">
 			<div className="flex flex-col gap-4 w-full sm:max-w-[290px]">
-				<div className="flex justify-center w-full h-full max-h-[200px]">
+				<div className="relative flex justify-center w-full aspect-[21/16] sm:aspect-[29/20] h-[330px] sm:h-[200px] self-center -my-14 xxs:-my-8 xs:my-0">
 					<Image
 						src={imageSrc}
 						alt={`${type} - ${model}`}
-						width={290}
-						height={200}
+						fill
 						className="object-contain"
 						loading="lazy"
 					/>
 				</div>
 				<div className="flex flex-col gap-[14px]">
 					<div className="flex flex-col gap-2">
-						<div className="mb-7">
-							<h3 className="text-lg- font-bold line-clamp-2">
+						<div className="mb-7 line-clamp-2">
+							<h3 className="text-lg- font-bold ">
 								{model}, {type}
 							</h3>
 							<h3 className="text-lg- font-bold">
@@ -88,23 +87,23 @@ const CardItem: React.FC<CardItemProps> = ({
 							></div>
 						</div>
 					</div>
-					<div className="flex flex-col gap-[1px]">
+					<div className="flex flex-col gap-[1px] w-[290px]">
 						<div className="text-xs leading-4+ text-descriptionDeviceGray">
 							Cena obowiązuje: {priceAvailability}
 						</div>
 						<div className="flex justify-start items-center gap-[2px] ">
-							<div className="font-bold text-2.5xl leading-[40px]">
+							<div className="font-bold text-5xl-">
 								{String(price)
 									.slice(0, -2)
 									.replace(/\B(?=(\d{3})+(?!\d))/g, " ")}
 							</div>
-							<div className="flex flex-col justify-center items-center self-end h-full text-sm leading-4 font-bold">
+							<div className="flex flex-col justify-center self-end h-full text-sm leading-4 font-bold -mb-[3px]">
 								<div>{String(price).slice(-2)}</div>
 								<div className="self-end">{currency}</div>
 							</div>
 						</div>
 					</div>
-					<div className="flex items-center leading-4+ font-bold text-financingGrey max-h-[18px]">
+					<div className="flex items-center leading-4+ font-bold text-financingGrey h-[18px]">
 						{financing}
 					</div>
 				</div>

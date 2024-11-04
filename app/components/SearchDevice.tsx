@@ -173,7 +173,7 @@ const SearchDevice: React.FC = () => {
 	return (
 		<div className="w-full bg-lightGray">
 			<div className="flex flex-col justify-start sm:justify-center items-center w-full max-w-[1046px] mx-auto">
-				<div className="self-start sm:self-center mx-8 sm:mx-0 lg:-ml-12 my-[23px] pb-[9px]">
+				<div className="self-start sm:self-center ml-8 sm:ml-0 lg:-ml-12 my-[23px] pb-[9px]">
 					<label htmlFor="search-input" className="sr-only">
 						Wyszukaj urządzenie
 					</label>
@@ -219,7 +219,7 @@ const SearchDevice: React.FC = () => {
 					/>
 				</div>
 
-				<div className="flex mx-8 sm:mx-0 self-start sm:self-center sm:justify-center md:justify-start md:w-full md:max-w-[1046px] md:pl-[18px] py-2 mb-1">
+				<div className="flex ml-8 sm:ml-0 self-start sm:self-center sm:justify-center md:justify-start md:w-full md:max-w-[1046px] md:pl-[18px] py-2 mb-1">
 					<h4 className="text-sm+">
 						Liczba wyników:{" "}
 						<span className="font-semibold">
