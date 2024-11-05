@@ -1,6 +1,6 @@
 import Image from "next/image";
 import CardItem from "@/components/CardItem";
-import { WashingMachine } from "@/app/data/devices";
+import { WashingMachine } from "@/data/devices";
 
 interface DevicesListProps {
   devices: WashingMachine[];

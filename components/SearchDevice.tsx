@@ -1,6 +1,6 @@
 "use client";
 import { useState, ChangeEvent, useMemo, useEffect, useCallback } from "react";
-import { washingMachines } from "@/app/data/devices";
+import { washingMachines } from "@/data/devices";
 import DevicesList from "@/components/DevicesList";
 import FilterDropdown, { Option } from "@/components/FilterDropdown";
 
